@@ -5,14 +5,14 @@ django + djangorestframework, lectures for flutter developers seeking to utilize
 
 ##Viewsets and Routers
 i utilized viewsets and routers provided by django rest_framework. This produces powerful functionalities with just a few lines of code.
- ''' python/api/views.py 
+ '' python/api/views.py 
  
  from rest_framework import viewsets
 
 class PostViewSet(viewsets.ModelViewSet):
   serializer_class = ''
   queryset = model.objects.all()
-'''
+''
 
 
 ''' python/api/urls.py

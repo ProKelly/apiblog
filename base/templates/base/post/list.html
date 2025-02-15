@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <div class="container mx-auto px-4 py-10">
+        <h1 class="text-4xl font-bold text-center text-blue-600 mb-8">📖 Latest Blog Posts</h1>
+
+        {% if posts %}
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for post in posts %}
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden p-6 hover:shadow-xl transition duration-300">
+                <!-- Post Title -->
+                <h2 class="text-2xl font-semibold text-gray-800 mb-3">{{ post.title }}</h2>
+                
+                <!-- Description -->
+                <p class="text-gray-600 mb-4">{{ post.description }}</p>
+
+                <!-- Extra Section -->
+                <div class="mt-4">
+                    <h3 class="text-lg font-medium text-gray-700">Extras:</h3>
+
+                    <!-- Image Section -->
+                    {% if post.extra.get_image_url %}
+                    <div class="mt-3">
+                        <img src="{{ post.extra.get_image_url }}" alt="Post Image" 
+                            class="w-full h-60 object-cover rounded-lg border border-gray-300 shadow-md"
+                            contenteditable="true">
+                    </div>
+                    {% endif %}
+
+                    <!-- Video Section -->
+                    {% if post.extra.get_video_url %}
+                    <div class="mt-4">
+                        <video class="w-full h-60 object-cover rounded-lg border border-gray-300 shadow-md" controls>
+                            <source src="{{ post.extra.get_video_url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-center text-gray-500 text-lg">No posts available.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

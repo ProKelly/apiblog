@@ -1,28 +1,37 @@
+```markdown
 # apiblog
-django + djangorestframework, lectures for flutter developers seeking to utilize django as a backend to their flutter mobile apps.
+Django + Django REST Framework, lectures for Flutter developers seeking to utilize Django as a backend for their Flutter mobile apps.
 
-#SUPER POWERS
+## SUPER POWERS
 
-##Viewsets and Routers
-i utilized viewsets and routers provided by django rest_framework. This produces powerful functionalities with just a few lines of code.
- '' python/api/views.py 
- 
- from rest_framework import viewsets
+### Viewsets and Routers
+I utilized viewsets and routers provided by Django REST Framework. This produces powerful functionalities with just a few lines of code.
+
+#### `api/views.py`
+```python
+from rest_framework import viewsets
+from base.models import Post
+from base.serializers import PostSerializer
 
 class PostViewSet(viewsets.ModelViewSet):
-  serializer_class = ''
-  queryset = model.objects.all()
-''
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
+```
 
-
-''' python/api/urls.py
+#### `api/urls.py`
+```python
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from api.views import PostViewSet
 
 router = DefaultRouter()
-router.register(r'prefix_name', view)
+router.register(r'posts', PostViewSet, basename='post')
 
 urlpatterns = [
     path('', include(router.urls)),
-'''
+]
+```
 
-## with viewsets and routers, one view is caable of performing CRUD operations with just about 2 lines of code.
+### Why Use Viewsets and Routers?
+With viewsets and routers, a single view can handle CRUD operations with just a few lines of code, making API development much more efficient.
+```

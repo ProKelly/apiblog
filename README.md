@@ -1,6 +1,9 @@
-```markdown
 # apiblog
-Django + Django REST Framework, lectures for Flutter developers seeking to utilize Django as a backend for their Flutter mobile apps.
+
+Django + Django REST Framework, lectures for Flutter developers seeking to utilize Django as a backend 
+for their Flutter mobile apps.
+
+```markdown
 
 ## SUPER POWERS
 
